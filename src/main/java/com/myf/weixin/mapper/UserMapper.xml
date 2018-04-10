@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myf.weixin.mapper.UserMapper">
+    <sql id="tableName">usr_wechat</sql>
+    <sql id="mainColumn">openid,nickname ,sex,province,city,country,headimgurl ,privilege,unionid ,updated_time ,created_time</sql>
+    <resultMap id="BaseResult" type="com.myf.weixin.model.WeChatUser">
+        <result column="openid" property="openid" jdbcType="CHAR"/>
+        <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="TINYINT"/>
+        <result column="province" property="province" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="country" property="country" jdbcType="VARCHAR"/>
+        <result column="headimgurl" property="headimgurl" jdbcType="VARCHAR"/>
+        <result column="privilege" property="privilege" jdbcType="VARCHAR"/>
+        <result column="unionid" property="unionid" jdbcType="CHAR"/>
+        <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <select id="findByOpenId" parameterType="java.lang.String" resultMap="BaseResult">
+        SELECT
+        <include refid="mainColumn"/>
+        FROM
+        <include refid="tableName"/>
+        WHERE openid = #{openid}
+    </select>
+</mapper>
