@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Created by maoyf0503 on 2018-4-10.
  *
@@ -18,8 +21,9 @@ public class HomeController {
     private UserMapper userMapper;
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(){
-        WeChatUser user = userMapper.findByOpenId("121111");
-        return "hello1";
+        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime startLocalDate = LocalDateTime.now();
+        return sf.format(startLocalDate);
     }
 
     @RequestMapping(value = "/user",method = RequestMethod.GET)

@@ -23,4 +23,20 @@
         <include refid="tableName"/>
         WHERE openid = #{openid}
     </select>
+    <insert id="create" keyColumn="openid" keyProperty="openid" useGeneratedKeys="false"
+        parameterType="com.myf.weixin.model.WeChatUser">
+        INSERT INTO
+        <include refid="tableName"/>
+        (openid,nickname ,sex,province,city,country,headimgurl ,privilege,unionid)
+        VALUE
+        (#{openid},#{nickname},#{sex},#{province},#{city},#{country},#{headimgurl},#{privilege},#{unionid})
+    </insert>
+    <update id="update" parameterType="com.myf.weixin.model.WeChatUser">
+        UPDATE
+        <include refid="tableName"/>
+        SET
+        nickname = #{nickname},sex=#{sex},province=#{province},
+        city=#{city},country=#{country},headimgurl=#{headimgurl},privilege=#{privilege}
+        WHERE openid=#{openid}
+    </update>
 </mapper>
