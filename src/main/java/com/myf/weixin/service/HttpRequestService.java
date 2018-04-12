@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -16,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class HttpRequestService {
     private final OkHttpClient client = new OkHttpClient.Builder()
+            //.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress("proxy.tplife.com", 31151)))
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
