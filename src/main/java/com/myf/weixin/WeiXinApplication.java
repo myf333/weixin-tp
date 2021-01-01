@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author maoyf0503
+ * 1111111
  * */
 @SpringBootApplication
 public class WeiXinApplication {
